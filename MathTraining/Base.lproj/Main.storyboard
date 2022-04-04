@@ -156,10 +156,10 @@
             </objects>
             <point key="canvasLocation" x="913.84615384615381" y="82.464454976303315"/>
         </scene>
-        <!--View Controller-->
+        <!--Result View Controller-->
         <scene sceneID="CSf-fZ-dSd">
             <objects>
-                <viewController id="86Z-Ck-AK8" sceneMemberID="viewController">
+                <viewController id="86Z-Ck-AK8" customClass="ResultViewController" customModule="MathTraining" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TD3-5N-KQz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -187,6 +187,9 @@
                                     <fontDescription key="titleFontDescription" type="system" pointSize="21"/>
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <segue destination="b9d-V6-Mbz" kind="unwind" unwindAction="backToTitleWithSender:" id="r8j-ha-jA5"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="YOU ARE GREAT!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FKG-Mc-snY">
                                 <rect key="frame" x="4" y="404" width="407" height="74"/>
@@ -199,8 +202,13 @@
                         <viewLayoutGuide key="safeArea" id="UWd-tc-hM9"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <connections>
+                        <outlet property="messageLabel" destination="FKG-Mc-snY" id="g8x-FN-17p"/>
+                        <outlet property="resultLabel" destination="frf-ub-J0d" id="sbv-dR-3Wj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PNT-iM-aLR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="b9d-V6-Mbz" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1809" y="82"/>
         </scene>

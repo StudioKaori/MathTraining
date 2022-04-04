@@ -13,6 +13,10 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
+    
+    @IBAction func backToTitle(sender: UIStoryboardSegue){
+        // Just tag for back button in ResultView, keep it empty
+    }
 
 
 }
