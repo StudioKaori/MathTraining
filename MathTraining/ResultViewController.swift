@@ -20,7 +20,7 @@ class ResultViewController: UIViewController {
 
         resultLabel.text = "\(round(result))%"
         if result < 50 {
-            messageLabel.text = "You probably need more practive. Please try again!"
+            messageLabel.text = "You probably need more training. Please try again!"
         }else if result < 80 {
             messageLabel.text = "Nice!"
         }else{
