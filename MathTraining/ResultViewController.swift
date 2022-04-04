@@ -8,11 +8,24 @@
 import UIKit
 
 class ResultViewController: UIViewController {
+    
+    var result = 0.0
+    
+    @IBOutlet var resultLabel: UILabel!
+    @IBOutlet var messageLabel: UILabel!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        resultLabel.text = "\(round(result))%"
+        if result < 50 {
+            messageLabel.text = "You probably need more training. Please try again!"
+        }else if result < 80 {
+            messageLabel.text = "Nice!"
+        }else{
+            messageLabel.text = "You are great!"
+        }
     }
     
 

@@ -10,7 +10,7 @@ import UIKit
 class QuizViewController: UIViewController {
     
     // the numbers of quizes
-    let numbersOfQuestions = 28
+    let numbersOfQuestions = 10
     var correctAnswers = 0
     var currentQuestionIndex = 0
     var correctAnswerIndex = 0
@@ -18,6 +18,8 @@ class QuizViewController: UIViewController {
     @IBOutlet var leftNumberLabel: UILabel!
     @IBOutlet var centerNumberLabel: UILabel!
     @IBOutlet var rightNumberLabel: UILabel!
+    @IBOutlet var currentResultLabel:UILabel!
+    @IBOutlet var currentNumberLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,13 +27,27 @@ class QuizViewController: UIViewController {
         setQuestions()
     }
     
+    // prepare will be executed when the view is navigated to the next view
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // via segue, you can access to the next view controller: that is segue.destination
+        // if the next view controller is type of ResultViewController (? is for checking if it's nil or not)
+        if let resultVC = segue.destination as? ResultViewController {
+            resultVC.result = Double(correctAnswers) / Double(numbersOfQuestions) * 100.0
+        }
+    }
+    
 
     @IBAction func tapped(sender: UIButton){
-        if sender.tag - 1 == answerIndex {
-            correct += 0
+        currentQuestionIndex += 1
+        currentNumberLabel.text = "\(currentQuestionIndex) / \(numbersOfQuestions)"
+        
+        if sender.tag - 1 == correctAnswerIndex {
+            correctAnswers += 1
+            currentResultLabel.text = "Correct! \(correctAnswers) / \(currentQuestionIndex)"
+        }else{
+            currentResultLabel.text = "Wrong! \(correctAnswers) / \(currentQuestionIndex)"
         }
         
-        currentQuestionIndex += 1
         if currentQuestionIndex >= numbersOfQuestions {
             performSegue(withIdentifier: "QuizToResult", sender: nil)
         }else{
